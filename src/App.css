@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  margin:20px;
+  display: flex;
+  align-items: center;
 }
 
 .App-logo {
@@ -36,3 +39,88 @@
     transform: rotate(360deg);
   }
 }
+
+.caixas{
+  display: flex;
+  justify-content: center;
+  margin: 10px
+  
+}
+
+h3 {
+  text-align: center;
+}
+
+.alerta{
+
+  width:50%;
+  margin: 20px auto!important;
+
+}
+
+.temperaturas{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.maxima, .minima{
+  display: flex;
+  flex-direction: row;
+  margin: 10px 10px;
+}
+
+.maxima h4, .minima h4{
+ margin-left: 3px;
+}
+
+.card-body{
+  padding: 4px;
+}
+
+.formulario {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 10px
+}
+
+.formulario *{
+  margin: 10px
+}
+
+.formulario input {
+  width: 30%;
+}
+
+.Pesquisa{
+  width: 60%;
+  margin: 0 auto;
+}
+
+.estrelas {
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto
+}
+
+.descricao {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 0 auto;
+  width: 70%;
+;
+}
+
+.estrelas * {
+  margin: 0 20px;
+  cursor: pointer;
+}
+
+.card-body{
+  padding: 4px!important;
+}
+
+
