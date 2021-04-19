@@ -54,12 +54,10 @@ function Principal() {
     .then(data => {
       setlatitude(data.coord.lat)
       setlongitude(data.coord.lon)
-      console.log(data)})
+      })
   }
 
   async function verifica_temperatura(){
-    console.log(latitude)
-    console.log(longitude)
     await fetch(`https://api.openweathermap.org/data/2.5/onecall?appid=71a9eaaa947591a63d6ece1b39418efa&lat=${latitude}&lon=${longitude}&exclude=current,minutely,hourly&lang=pt_br&units=metric`)
     .then(response => response.json())
     .then(data => {
@@ -73,7 +71,6 @@ function Principal() {
       descramanha(amanha.weather[0].description)
       iconehoje(resgatafigura(hoje.weather[0].icon))
       iconeamanha(resgatafigura(amanha.weather[0].icon))
-      console.log(data)
   })
 }
 
@@ -113,9 +110,8 @@ function Principal() {
     
       await verifica_cidade()
       await verifica_temperatura()
-      console.log('3')
       await verifica_poluicao()
-      console.log('4')
+
     }
     ,[cidade,latitude,longitude])
 

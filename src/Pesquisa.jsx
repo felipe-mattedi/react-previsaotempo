@@ -19,20 +19,28 @@ function Pesquisa() {
 
   var AWS = require('aws-sdk');
   AWS.config.update({region: 'us-east-1'});
+  AWS.config.accessKeyId='AKIASGP6X3EDVNB53IH4'
+  AWS.config.secretAccessKey='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'
   var sqs = new AWS.SQS({apiVersion: '2012-11-05'});
 
-  var params = {
-   MessageBody: "Teste Felipe",
-   QueueUrl: "https://sqs.us-east-1.amazonaws.com/151394965767/pesquisa_site_1"
-  };
 
- sqs.sendMessage(params, function(err, data) {
-  if (err) {
-    console.log("Error", err);
-  } else {
-    console.log("Success", data.MessageId);
+
+  const enviamsg = (evento) => {
+    var nota = evento.target.ownerSVGElement.id
+    var params = {
+      MessageBody: `${nota}`,
+      QueueUrl: "https://sqs.us-east-1.amazonaws.com/151394965767/pesquisa_site_1"
+     };
+
+
+    sqs.sendMessage(params, function(err, data) {
+      if (err) {
+        console.log("Error", err);
+      }
+      });
+
+
   }
-  });
 
   const solidstar =  (evento) => {
     if(evento.target.id == 1){
@@ -78,11 +86,11 @@ function Pesquisa() {
     <Card>
     <Card.Body>Você gostou desta página?!</Card.Body>
     <div className='estrelas'>
-    <FontAwesomeIcon id='1' onMouseEnter={solidstar} onMouseLeave={star} icon={star1 ? faStar: StarR}  size='2x' />
-    <FontAwesomeIcon id='2'  onMouseEnter={solidstar} onMouseLeave={star} icon={star2 ? faStar: StarR} size='2x' />
-    <FontAwesomeIcon id='3'  onMouseEnter={solidstar} onMouseLeave={star} icon={star3 ? faStar: StarR} size='2x' />  
-    <FontAwesomeIcon id='4'  onMouseEnter={solidstar} onMouseLeave={star} icon={star4 ? faStar: StarR} size='2x' />
-    <FontAwesomeIcon id='5'  onMouseEnter={solidstar} onMouseLeave={star} icon={star5 ? faStar: StarR} size='2x'/>
+    <FontAwesomeIcon id='1'  onMouseEnter={solidstar} onMouseLeave={star} icon={star1 ? faStar: StarR}  size='2x' onClick={enviamsg} />
+    <FontAwesomeIcon id='2'  onMouseEnter={solidstar} onMouseLeave={star} icon={star2 ? faStar: StarR} size='2x' onClick={enviamsg} />
+    <FontAwesomeIcon id='3'  onMouseEnter={solidstar} onMouseLeave={star} icon={star3 ? faStar: StarR} size='2x' onClick={enviamsg}/>  
+    <FontAwesomeIcon id='4'  onMouseEnter={solidstar} onMouseLeave={star} icon={star4 ? faStar: StarR} size='2x' onClick={enviamsg}/>
+    <FontAwesomeIcon id='5'  onMouseEnter={solidstar} onMouseLeave={star} icon={star5 ? faStar: StarR} size='2x'onClick={enviamsg}/>
     </div>
     <div className='descricao'>
     <p>Odiei!</p>
