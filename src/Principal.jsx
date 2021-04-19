@@ -75,7 +75,7 @@ function Principal() {
 }
 
   async function verifica_poluicao(){
-    await fetch(`http://api.openweathermap.org/data/2.5/air_pollution?appid=71a9eaaa947591a63d6ece1b39418efa&lat=${latitude}&lon=${longitude}&lang=pt_br`)
+    await fetch(`https://api.openweathermap.org/data/2.5/air_pollution?appid=71a9eaaa947591a63d6ece1b39418efa&lat=${latitude}&lon=${longitude}&lang=pt_br`)
     .then(response => response.json())
     .then(data => {
     setpoluicao(data.list[0].main.aqi)
