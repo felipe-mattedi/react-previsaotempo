@@ -113,7 +113,7 @@ function Principal() {
       await verifica_poluicao()
 
     }
-    ,[cidade,latitude,longitude])
+    ,[cidade,latitude,longitude,poluicao])
 
     
 
