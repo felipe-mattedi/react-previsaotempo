@@ -4,6 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 import { faStar as StarR} from '@fortawesome/free-regular-svg-icons'
 import { useEffect, useState } from 'react';
+import { AWS } from 'aws-sdk';
+
 
 
 
@@ -14,6 +16,23 @@ function Pesquisa() {
   const [star3, setstar3] = useState(false)
   const [star4, setstar4] = useState(false)
   const [star5, setstar5] = useState(false)
+
+  var AWS = require('aws-sdk');
+  AWS.config.update({region: 'us-east-1'});
+  var sqs = new AWS.SQS({apiVersion: '2012-11-05'});
+
+  var params = {
+   MessageBody: "Teste Felipe",
+   QueueUrl: "https://sqs.us-east-1.amazonaws.com/151394965767/pesquisa_site_1"
+  };
+
+ sqs.sendMessage(params, function(err, data) {
+  if (err) {
+    console.log("Error", err);
+  } else {
+    console.log("Success", data.MessageId);
+  }
+  });
 
   const solidstar =  (evento) => {
     if(evento.target.id == 1){
