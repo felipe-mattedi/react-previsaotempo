@@ -75,11 +75,12 @@ function Principal() {
 }
 
   async function verifica_poluicao(){
-    await fetch(`https://api.openweathermap.org/data/2.5/air_pollution?appid=71a9eaaa947591a63d6ece1b39418efa&lat=${latitude}&lon=${longitude}&lang=pt_br`)
-    .then(response => response.json())
-    .then(data => {
+    const resultado = await fetch(`https://api.openweathermap.org/data/2.5/air_pollution?appid=71a9eaaa947591a63d6ece1b39418efa&lat=${latitude}&lon=${longitude}&lang=pt_br`)
+
+    const data =  await resultado.json()
+    
     setpoluicao(data.list[0].main.aqi)
-  })}
+  }
 
   function resgatafigura(tipo){
     switch (tipo.substring(0,2)){
