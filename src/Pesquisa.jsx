@@ -19,8 +19,8 @@ function Pesquisa() {
 
   var AWS = require('aws-sdk');
   AWS.config.update({region: 'us-east-1'});
-  AWS.config.accessKeyId='AKIASGP6X3EDVNB53IH4'
-  AWS.config.secretAccessKey='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'
+  AWS.config.accessKeyId='#################'
+  AWS.config.secretAccessKey='#############################'
   var sqs = new AWS.SQS({apiVersion: '2012-11-05'});
 
 
